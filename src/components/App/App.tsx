@@ -22,12 +22,12 @@ import { teamSize, minTeams, maxTeams } from '../../utils/const';
 
 const idToCard =
   (offset: number = 0) =>
-  (id: GenshinCharacter['id'], index: number) => (
-    <Card
-      index={index + offset}
-      character={characters.find(c => c.id === id)}
-    />
-  );
+    (id: GenshinCharacter['id'], index: number) => (
+      <Card
+        index={index + offset}
+        character={characters.find(c => c.id === id)}
+      />
+    );
 
 const App: Component = () => {
   const [teams, setTeams] = createSignal<GenshinCharacter['id'][]>([]);
@@ -159,6 +159,14 @@ const App: Component = () => {
           </For>
         </div>
       </main>
+      <footer class={styles.footer}>
+        <p>Maded by <a href="https://github.com/Pustur">Pustur</a></p>
+        <p class={styles.disclaimer}>
+          This project was cloned as an alternative to
+          the&nbsp;<a class={styles.link} href='https://genshin-impact-team-randomizer.pages.dev/'>official page</a>,
+          as Cloudflare began to be blocked in some countries.
+        </p>
+      </footer>
     </>
   );
 };

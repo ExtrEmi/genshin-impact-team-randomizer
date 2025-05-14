@@ -30,13 +30,6 @@
   padding-left: 0.8rem;
 }
 
-.disclaimer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
 a {
   font-family: var(--font-family-base);
 }

@@ -160,11 +160,14 @@ const App: Component = () => {
         </div>
       </main>
       <footer class={styles.footer}>
-        <p>Maded by <a href="https://github.com/Pustur">Pustur</a></p>
-        <p class={styles.disclaimer}>
+        <p aria-label='Author'>Maded by <a href="https://github.com/Pustur">Pustur</a></p>
+        <p aria-label='Disclaimer website'>
           This project was cloned as an alternative to
-          the&nbsp;<a class={styles.link} href='https://genshin-impact-team-randomizer.pages.dev/'>official page</a>,
+          the <a href='https://genshin-impact-team-randomizer.pages.dev/'>official page</a>,
           as Cloudflare began to be blocked in some countries.
+        </p>
+        <p aria-label='Disclaimer game data'>
+          This website is not affiliated with Genshin Impact or HoYoverse (miHoYo Co., Ltd.), all images and character names are property of miHoYo.
         </p>
       </footer>
     </>

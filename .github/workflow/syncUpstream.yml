@@ -1,0 +1,35 @@
+name: Sync Fork with Upstream
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3,15 * * 2,3,6'    # every Tuesday, Wednesday, and Saturday at 3am and 3pm
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: main
+      
+      - name: Add upstream remote and fetch
+        run: |
+          git remote add upstream https://github.com/Pustur/genshin-impact-team-randomizer.git
+          git fetch upstream master
+
+      - name: Check if upstream/master is already in main
+        run: |
+          # If upstream/master is ancestor of main, nothing new
+          if git merge-base --is-ancestor upstream/master main; then
+            echo "If upstream/master is already in main, skip merge."
+            exit 0
+          fi
+
+      - name: Push main
+        run: git push --force-with-lease origin main

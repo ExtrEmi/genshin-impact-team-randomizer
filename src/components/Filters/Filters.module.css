@@ -12,6 +12,8 @@
 .filterRarity {
   display: flex;
   gap: 4px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .label {

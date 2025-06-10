@@ -31,6 +31,7 @@ const idToCard =
 
 const App: Component = () => {
   const [teams, setTeams] = createSignal<GenshinCharacter['id'][]>([]);
+  const [areNamesCopiedToClipboard, setAreNamesCopiedToClipboard] = createSignal(false);
   const areAllCharatersSelected = () =>
     selectedCharacters.selectedCharacters.length === characters.length;
   const generateTeams = () => {
@@ -50,6 +51,16 @@ const App: Component = () => {
     }));
   };
 
+  const copyTeamNamesToClipboard = () => {
+    if (!navigator.clipboard) return;
+
+    const teamNames = teams().map(id => characters.find(c => c.id === id)?.shortName).join(', ');
+
+    setAreNamesCopiedToClipboard(true);
+    setTimeout(() => setAreNamesCopiedToClipboard(false), 1000);
+
+    navigator.clipboard.writeText(teamNames).catch(console.error);
+  };
   return (
     <>
       <header class={styles.header}>
@@ -90,7 +101,12 @@ const App: Component = () => {
           >
             {areAllCharatersSelected() ? 'Deselect' : 'Select'} all
           </Button>
-          <Button onClick={generateTeams}>Generate teams</Button>
+          <Button onClick={generateTeams}>Generate Teams</Button>
+          {teams().length > 0 && (
+            <Button {...areNamesCopiedToClipboard()?{secondary: true}:{}} onClick={copyTeamNamesToClipboard}>
+              {areNamesCopiedToClipboard() ? "Copied!" : "Copy Team Names"}
+            </Button>
+          )}
           {teamsCount.teamsCount < maxTeams && (
             <Button secondary onClick={increaseTeamSize}>
               Add Team

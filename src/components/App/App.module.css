@@ -56,6 +56,9 @@ a {
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
 }
 
 .grid {

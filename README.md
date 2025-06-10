@@ -2,6 +2,11 @@
 
 > A web app to randomize your Genshin Impact team based on the characters that you own
 
+### Deploying status
+> [![Sync Fork with Upstream](https://github.com/ExtrEmi/genshin-impact-team-randomizer/actions/workflows/syncUpstream.yml/badge.svg)](https://github.com/ExtrEmi/genshin-impact-team-randomizer/actions/workflows/syncUpstream.yml)
+> [![Netlify Status](https://api.netlify.com/api/v1/badges/b9f16534-ab36-4cbe-a39f-78d8fc9c7779/deploy-status)](https://app.netlify.com/projects/genshin-impact-team-randomizer-copy/deploys)
+
+
 ## Usage
 
 Click on the character icons to select / remove them from the pool of selectable options.  

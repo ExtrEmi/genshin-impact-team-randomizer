@@ -3,6 +3,7 @@ import solidPlugin from 'vite-plugin-solid';
 
 export default defineConfig({
   plugins: [solidPlugin()],
+  base: process.env.VITE_BASE_PATH || '/',
   build: {
     target: 'esnext',
   },
